@@ -1,0 +1,290 @@
+
+<div class="flex flex-col min-h-full">
+    <!-- Header -->
+    <header class="sticky top-0 z-10 px-8 py-4 glass-panel border-b border-slate-200 dark:border-border-dark flex justify-between items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="flex items-center gap-4">
+            <h2 class="text-xl font-bold dark:text-white tracking-tight">Technical Cockpit</h2>
+            <div class="h-6 w-px bg-slate-300 dark:bg-border-dark"></div>
+            <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                <span class="material-icons text-sm mr-1">location_on</span>
+                Alta Badia, Italy
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="bg-slate-100 dark:bg-white/5 p-1 rounded-lg flex">
+                <button class="px-4 py-1.5 text-xs font-bold uppercase rounded-md bg-white dark:bg-surface-dark shadow-sm text-primary">Live</button>
+                <button class="px-4 py-1.5 text-xs font-bold uppercase rounded-md text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors">Historical</button>
+            </div>
+            <button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-primary/20 active:scale-95">
+                <span class="material-icons text-sm">download</span> 
+                <span class="hidden sm:inline">Export Telemetry</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+        <!-- Hero Section: Last Run Analysis -->
+        <section class="relative h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl group border border-slate-200 dark:border-border-dark">
+            <!-- Background Map -->
+            <div class="absolute inset-0 bg-gray-900">
+                <img ngSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuCDzN08oTKCBRRi77-5aA68w284VakeNr-Zxjws_T0AnOxbLLM2tZ5l6CSpebef3z85Oy1kx0hwL47OAbtFYofUSbGyH9r3suV35GnfbKudWIgxTkG0proVTHVJcupyPqi4eBNY8D2Orl84UdPVRUYb5RvgP5B-f3D8-43eScG73wwWYVoS0sTph-4HYt81PZqPdxYsWtUOkVZ287iU-6QzBXr-a5SbM1OugdPJaYBRyt9i_gcxStHjSBFL9Bk0_ML9uhWaFtE2Gds" 
+                     fill 
+                     priority
+                     class="object-cover opacity-80"
+                     alt="Aerial view of run" />
+            </div>
+
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/30"></div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                <div class="flex justify-between items-start">
+                    <div class="bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-lg">
+                        <h3 class="text-accent-yellow font-bold uppercase text-xs tracking-[0.2em] mb-1">Current Run Analysis</h3>
+                        <p class="text-white text-2xl font-bold tracking-tight">Gran Risa - Sector 3 Performance</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full text-xs font-bold flex items-center shadow-lg backdrop-blur-sm">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 animate-pulse"></span> RECORDING
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Simplified Map Overlay SVG -->
+                <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+                    <svg class="w-[80%] h-auto opacity-80 drop-shadow-2xl" viewBox="0 0 800 400">
+                        <!-- Slalom Path -->
+                        <path class="opacity-50" d="M 100 350 Q 150 250 250 300 T 400 200 T 550 250 T 700 100" fill="none" stroke="#0d7ff2" stroke-dasharray="10 5" stroke-width="4"></path>
+                        <path d="M 100 350 Q 150 250 250 300 T 400 200 T 550 250 T 700 100" fill="none" stroke="white" stroke-width="3">
+                            <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" duration="3s" fill="freeze" />
+                        </path>
+                        <!-- Markers -->
+                        <circle cx="100" cy="350" fill="#e2ff31" r="5"></circle>
+                        <circle cx="400" cy="200" fill="#e2ff31" r="5"></circle>
+                        <circle cx="700" cy="100" fill="#e2ff31" r="8">
+                             <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <!-- Labels -->
+                        <text fill="white" font-size="12" font-weight="bold" x="80" y="380">START</text>
+                        <text fill="white" font-size="12" x="380" y="180" class="bg-black">CP1 +0.22s</text>
+                        <text fill="#e2ff31" font-size="14" font-weight="bold" x="680" y="80">FINISH</text>
+                    </svg>
+                </div>
+
+                <div class="flex justify-between items-end pointer-events-auto">
+                    <div class="space-y-2">
+                        <div class="flex gap-4">
+                            <div class="bg-black/40 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 shadow-lg">
+                                <span class="text-slate-300 text-[10px] uppercase font-bold block mb-1">Run Time</span>
+                                <span class="text-white text-xl font-bold font-mono">1:24.42</span>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 shadow-lg">
+                                <span class="text-slate-300 text-[10px] uppercase font-bold block mb-1">Delta Leader</span>
+                                <span class="text-accent-yellow text-xl font-bold font-mono">-0.12s</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full text-white transition-all active:scale-95">
+                            <span class="material-icons">play_arrow</span>
+                        </button>
+                        <button class="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full text-white transition-all active:scale-95">
+                            <span class="material-icons">replay</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Top Speed -->
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-border-dark flex flex-col justify-between group hover:border-primary/50 transition-all cursor-default shadow-sm hover:shadow-md hover:shadow-primary/5">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="bg-primary/10 p-2 rounded-lg">
+                        <span class="material-icons text-primary">speed</span>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-500 flex items-center bg-emerald-500/10 px-2 py-0.5 rounded">
+                        <span class="material-icons text-xs mr-0.5">trending_up</span> 4.2%
+                    </span>
+                </div>
+                <div>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1 block">Top Speed</span>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-4xl font-bold text-slate-900 dark:text-white metric-glow">84.5</span>
+                        <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">km/h</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex gap-1 h-8 items-end">
+                    <div class="w-full bg-primary/20 h-[30%] rounded-sm"></div>
+                    <div class="w-full bg-primary/20 h-[50%] rounded-sm"></div>
+                    <div class="w-full bg-primary/20 h-[80%] rounded-sm"></div>
+                    <div class="w-full bg-primary/20 h-[45%] rounded-sm"></div>
+                    <div class="w-full bg-primary/60 h-[90%] rounded-sm"></div>
+                    <div class="w-full bg-primary h-[100%] rounded-sm animate-pulse"></div>
+                </div>
+            </div>
+
+            <!-- G-Force -->
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-border-dark flex flex-col justify-between group hover:border-accent-yellow/50 transition-all cursor-default shadow-sm hover:shadow-md hover:shadow-accent-yellow/5">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="bg-accent-yellow/10 p-2 rounded-lg">
+                        <span class="material-icons text-accent-yellow">psychology_alt</span>
+                    </div>
+                    <span class="text-xs font-bold text-slate-500">Max Turn 4</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1 block">Avg G-Force</span>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-4xl font-bold text-slate-900 dark:text-white">3.2</span>
+                        <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">G</span>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="flex justify-between text-[10px] text-slate-500 mb-1">
+                        <span>Sustained Load</span>
+                        <span>2.8G Threshold</span>
+                    </div>
+                    <div class="w-full bg-slate-100 dark:bg-border-dark h-2 rounded-full overflow-hidden">
+                        <div class="bg-accent-yellow h-full w-[72%] shadow-[0_0_8px_rgba(226,255,49,0.5)]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gate Precision -->
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-border-dark flex flex-col justify-between group hover:border-blue-400/50 transition-all cursor-default shadow-sm hover:shadow-md hover:shadow-blue-400/5">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="bg-blue-500/10 p-2 rounded-lg">
+                        <span class="material-icons text-blue-400">track_changes</span>
+                    </div>
+                    <span class="text-xs font-bold text-primary">Peak Accuracy</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1 block">Gate Precision</span>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-4xl font-bold text-slate-900 dark:text-white">98.4</span>
+                        <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">%</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-around">
+                    <div class="text-center">
+                        <span class="block text-slate-500 text-[10px] uppercase font-bold">Late Entries</span>
+                        <span class="text-red-400 font-bold">02</span>
+                    </div>
+                    <div class="w-px bg-slate-200 dark:bg-border-dark h-full"></div>
+                    <div class="text-center">
+                        <span class="block text-slate-500 text-[10px] uppercase font-bold">Early Apex</span>
+                        <span class="text-emerald-400 font-bold">48</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Line Chart Section -->
+        <section class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-border-dark overflow-hidden shadow-sm">
+            <div class="px-8 py-6 border-b border-slate-200 dark:border-border-dark flex justify-between items-center bg-slate-50/50 dark:bg-white/5">
+                <div>
+                    <h3 class="font-bold dark:text-white text-lg">Seasonal Progress Trend</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Delta from Competition Leader (Seconds)</p>
+                </div>
+                <div class="flex gap-2">
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-background-dark text-xs font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-border-dark">
+                        <span class="w-3 h-3 rounded-full bg-primary"></span> Jess
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-background-dark text-xs font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-border-dark">
+                        <span class="w-3 h-3 rounded-full bg-slate-400"></span> World Avg
+                    </div>
+                </div>
+            </div>
+            <div class="p-8 h-80 relative">
+                <!-- Fake Chart Grid Lines -->
+                <div class="absolute inset-8 flex flex-col justify-between pointer-events-none opacity-10">
+                    <div class="w-full h-px bg-slate-400"></div>
+                    <div class="w-full h-px bg-slate-400"></div>
+                    <div class="w-full h-px bg-slate-400"></div>
+                    <div class="w-full h-px bg-slate-400"></div>
+                    <div class="w-full h-px bg-slate-400"></div>
+                </div>
+                <!-- SVG Chart Visualization -->
+                <svg class="w-full h-full relative z-1" viewBox="0 0 1000 240" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#0d7ff2" stop-opacity="0.15"></stop>
+                            <stop offset="100%" stop-color="#0d7ff2" stop-opacity="0"></stop>
+                        </linearGradient>
+                    </defs>
+                    <!-- World Avg Path -->
+                    <path d="M 0 180 C 100 175, 200 190, 300 170 C 400 150, 500 160, 600 140 C 700 145, 800 130, 900 120 L 1000 115" fill="none" opacity="0.4" stroke="#94a3b8" stroke-dasharray="8 4" stroke-width="2"></path>
+                    
+                    <!-- Area Fill -->
+                    <path d="M 0 160 C 100 140, 200 155, 300 110 C 400 90, 500 105, 600 65 C 700 75, 800 45, 900 35 L 1000 25 V 240 H 0 Z" fill="url(#chartGradient)"></path>
+                    
+                    <!-- Jess Path -->
+                    <path d="M 0 160 C 100 140, 200 155, 300 110 C 400 90, 500 105, 600 65 C 700 75, 800 45, 900 35 L 1000 25" fill="none" stroke="#0d7ff2" stroke-width="4"></path>
+                    
+                    <!-- Highlight Point -->
+                    <circle cx="900" cy="35" fill="#0d7ff2" r="6"></circle>
+                    <circle cx="900" cy="35" fill="#0d7ff2" opacity="0.2" r="12">
+                         <animate attributeName="r" values="6;15;6" dur="2s" repeatCount="indefinite" />
+                         <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+                <!-- Chart X-Axis Labels -->
+                <div class="absolute bottom-0 left-8 right-8 flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest translate-y-2">
+                    <span>Sölden</span>
+                    <span>Killington</span>
+                    <span>Val d'Isere</span>
+                    <span>Courchevel</span>
+                    <span>Lienz</span>
+                    <span>Kranjska Gora</span>
+                    <span>Cortina</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Data Table / Recent Runs -->
+        <section class="pb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold dark:text-white">Recent Training History</h3>
+                <button class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
+                    View All Sessions <span class="material-icons text-sm">arrow_forward</span>
+                </button>
+            </div>
+            <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-border-dark overflow-hidden shadow-sm">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-background-dark/50 border-b border-slate-200 dark:border-border-dark">
+                            <th class="px-8 py-4 text-xs font-bold uppercase text-slate-500 tracking-wider">Date</th>
+                            <th class="px-8 py-4 text-xs font-bold uppercase text-slate-500 tracking-wider">Location</th>
+                            <th class="px-8 py-4 text-xs font-bold uppercase text-slate-500 tracking-wider">Run Type</th>
+                            <th class="px-8 py-4 text-xs font-bold uppercase text-slate-500 tracking-wider text-right">Time</th>
+                            <th class="px-8 py-4 text-xs font-bold uppercase text-slate-500 tracking-wider text-right">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-border-dark/50">
+                        @for (run of recentRuns; track run.date) {
+                            <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group cursor-pointer">
+                                <td class="px-8 py-5 text-sm font-medium dark:text-slate-300">{{run.date}}</td>
+                                <td class="px-8 py-5 text-sm dark:text-white font-bold italic">{{run.location}}</td>
+                                <td class="px-8 py-5 text-sm text-slate-500">{{run.type}}</td>
+                                <td class="px-8 py-5 text-sm font-mono text-right dark:text-white">{{run.time}}</td>
+                                <td class="px-8 py-5 text-right">
+                                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full border"
+                                          [class.bg-emerald-500-10]="run.statusColor === 'emerald'"
+                                          [class.text-emerald-500]="run.statusColor === 'emerald'"
+                                          [class.border-emerald-500-20]="run.statusColor === 'emerald'"
+                                          [class.bg-slate-500-10]="run.statusColor === 'slate'"
+                                          [class.text-slate-500]="run.statusColor === 'slate'"
+                                          [class.border-slate-500-20]="run.statusColor === 'slate'">
+                                        {{run.status}}
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

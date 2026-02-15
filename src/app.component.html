@@ -1,0 +1,36 @@
+
+<div class="flex h-screen w-full overflow-hidden bg-background-light dark:bg-background-dark">
+  <!-- Sidebar Navigation -->
+  <app-sidebar [activeView]="currentView()" (viewChange)="setView($event)"></app-sidebar>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 relative overflow-hidden flex flex-col h-full w-full">
+    <div class="flex-1 overflow-y-auto scroll-smooth">
+      @if (currentView() === 'analytics') {
+        <app-run-analytics></app-run-analytics>
+      } @else {
+        <app-performance-dashboard></app-performance-dashboard>
+      }
+    </div>
+  </main>
+  
+  <!-- Right Action Sidebar (Collapsed/Icon-only style matching designs) -->
+  <div class="hidden md:flex w-16 bg-white dark:bg-surface-dark border-l border-slate-200 dark:border-border-dark flex-col items-center py-6 space-y-8 z-20 shrink-0">
+      <button class="relative p-2 text-slate-400 hover:text-primary transition-colors group">
+          <span class="material-icons">notifications</span>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-surface-dark group-hover:animate-ping"></span>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-surface-dark"></span>
+      </button>
+      <button class="p-2 text-slate-400 hover:text-primary transition-colors">
+          <span class="material-icons">bolt</span>
+      </button>
+      <button class="p-2 text-slate-400 hover:text-primary transition-colors">
+          <span class="material-icons">share</span>
+      </button>
+      <div class="mt-auto">
+          <button class="p-2 text-slate-400 hover:text-primary transition-colors">
+              <span class="material-icons">help_outline</span>
+          </button>
+      </div>
+  </div>
+</div>

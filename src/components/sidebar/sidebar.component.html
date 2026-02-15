@@ -1,0 +1,76 @@
+
+<aside class="w-80 bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-border-dark flex flex-col h-full shrink-0 z-30 shadow-xl shadow-black/5">
+    <div class="p-8 flex flex-col items-center text-center">
+        <!-- Profile Image -->
+        <div class="relative group cursor-pointer">
+            <div class="absolute -inset-1 bg-gradient-to-tr from-primary to-accent-yellow rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+            <div class="relative w-28 h-28 rounded-full border-4 border-white dark:border-surface-dark overflow-hidden shadow-xl">
+                 <img ngSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDoc9lhUOPQQV_ciMI1xgyV9s___zY_w8C56qkBE92KpnpTzDIY-lVq6K7homIorz_8LShyKx4iibj3rKs7c5_PY_JclbtYp8igYLIn7v3Va2tMqzXj0czopReT8cyeuBJxTOThyg5OIUGgoW9Zd4R4TcnYXh_fsdIz5oRocjmgTI8OUn-HWYq9rUBaqAm-Mntm541LlMpdJNYbCA9jH35o9_A7knJdRlN-hppRhZUE3vKw05K0qJpYpu4vR4piaXTr88lR5puzJYI" 
+                      alt="Athlete Portrait" 
+                      fill
+                      priority
+                      class="object-cover" />
+            </div>
+            <div class="absolute bottom-1 right-1 bg-accent-yellow text-background-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">Elite</div>
+        </div>
+
+        <h1 class="mt-6 text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Jess Vallen</h1>
+        <p class="text-primary font-medium text-sm tracking-widest uppercase mb-4">Giant Slalom Specialist</p>
+
+        <div class="grid grid-cols-2 gap-3 w-full mt-4">
+            <div class="bg-background-light dark:bg-background-dark/50 p-3 rounded-xl border border-slate-100 dark:border-border-dark">
+                <span class="block text-xs text-slate-500 uppercase">Global Rank</span>
+                <span class="text-xl font-bold text-slate-900 dark:text-white">#14</span>
+            </div>
+            <div class="bg-background-light dark:bg-background-dark/50 p-3 rounded-xl border border-slate-100 dark:border-border-dark">
+                <span class="block text-xs text-slate-500 uppercase">Podiums</span>
+                <span class="text-xl font-bold text-slate-900 dark:text-white">08</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
+        @for (item of navItems; track item.id) {
+            <button 
+                (click)="selectView(item.id)"
+                class="w-full flex items-center px-4 py-3 rounded-lg transition-all group duration-200 text-left relative overflow-hidden"
+                [class.bg-primary-10]="activeView() === item.id"
+                [class.bg-primary]="activeView() === item.id && false" 
+                [class.bg-slate-50]="activeView() !== item.id && false"
+                [class.dark:bg-white-5]="activeView() !== item.id && false"
+            >
+                @if (activeView() === item.id) {
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full"></div>
+                    <div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+                }
+                <span class="material-icons text-xl mr-3 transition-colors" 
+                      [class.text-primary]="activeView() === item.id"
+                      [class.text-slate-500]="activeView() !== item.id">
+                      {{item.icon}}
+                </span>
+                <span class="font-medium"
+                      [class.text-primary]="activeView() === item.id"
+                      [class.text-slate-500]="activeView() !== item.id"
+                      [class.dark:text-slate-400]="activeView() !== item.id"
+                      [class.group-hover:text-slate-900]="activeView() !== item.id"
+                      [class.dark:group-hover:text-white]="activeView() !== item.id">
+                    {{item.label}}
+                </span>
+            </button>
+        }
+    </nav>
+
+    <!-- Bottom Status -->
+    <div class="p-6 mt-auto">
+        <div class="bg-gradient-to-br from-primary to-blue-700 p-4 rounded-xl text-white shadow-lg shadow-primary/20">
+            <p class="text-xs font-medium opacity-80 uppercase mb-1">Season Progress</p>
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-lg font-bold">78% Complete</span>
+            </div>
+            <div class="w-full bg-white/20 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-accent-yellow h-full w-[78%] shadow-[0_0_10px_rgba(226,255,49,0.5)]"></div>
+            </div>
+        </div>
+    </div>
+</aside>
